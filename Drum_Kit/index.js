@@ -5,6 +5,7 @@ for(var i=0;i<numberOfButtons;i++){
         {
         var buttonNAmes=this.innerHTML;
         makeSound(buttonNAmes);
+        backAnimation(buttonNAmes);
     }
 );
 }
@@ -12,6 +13,7 @@ for(var i=0;i<numberOfButtons;i++){
     //using keyboard
     document.addEventListener("keypress",function(event){
         makeSound(event.key);
+        backAnimation(event.key);
     });
 
         function makeSound(key){
@@ -48,5 +50,12 @@ for(var i=0;i<numberOfButtons;i++){
             default:console.log(key);
         }
     }
-    
+
+    function backAnimation(currentKey){
+        var cur=document.querySelector("."+currentKey);
+        cur.classList.add("pressed");
+        setTimeout(function(){
+            cur.classList.remove("pressed");
+    },100);
+    }
 
